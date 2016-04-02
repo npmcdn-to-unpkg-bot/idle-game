@@ -20,3 +20,9 @@ export const toggleTodo = (id) => {
     id
   }
 }
+
+export const incAttack = () => {
+  return {
+    type: 'INCREMENT_ATTACK'
+  }
+}

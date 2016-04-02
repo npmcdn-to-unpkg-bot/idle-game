@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from '../actions'
+import { incAttack } from '../actions'
+import Attack from '../components/Attack'
 
 let AddTodo = ({ dispatch }) => {
   let input

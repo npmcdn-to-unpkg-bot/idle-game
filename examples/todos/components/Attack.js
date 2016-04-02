@@ -1,13 +1,20 @@
 import React, { PropTypes } from 'react'
 
-const Attack = ({amount: 1}) => (
-  <li>
-    {amount}
-  </li>
+const Attack = ({ attackValue, onClick }) => (
+  <div>
+    <p>Attack: {attackValue} </p>
+
+    <button
+      onClick={onClick} 
+    >
+    Increase
+    </button>
+  </div>
 )
 
-Todo.propTypes = {
-  Attack: PropTypes.number
+Attack.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  attackValue: PropTypes.number.isRequired
 }
 
 export default Attack
