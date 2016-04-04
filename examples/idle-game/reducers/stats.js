@@ -8,24 +8,32 @@ const initialState = {
 
 export default function stats(state = initialState, action) {
 
-console.log('state', state)
+//console.log('state', state)
   if (state.currency > 0) {
 	  switch (action.type) {
-	    case 'INCREMENT_ATTACK':
+	    case 'UPDATE_ATTACK':
 	      return Object.assign({}, state, {
-	        attack: state.attack + 1,
-	        currency: state.currency - 1
+	       attack: action.amount,
+	       currency: state.currency - action.cost
 	      })
-	    case 'INCREMENT_BLOCK':
+	    case 'UPDATE_BLOCK':
 	      return Object.assign({}, state, {
-	        block: state.block + 1,
-	        currency: state.currency - 1
+	       block: action.amount,
+	       currency: state.currency - action.cost
 	      })
-	    case 'INCREMENT_HEALTH':
+	    case 'UPDATE_HEALTH':
 	      return Object.assign({}, state, {
-	        health: state.health + 1,
-	        currency: state.currency - 1
+	        health: action.amount,
+	       currency: state.currency - action.cost
 	      })
+	    case 'UPDATE_CURRENCY':
+	      return Object.assign({}, state, {
+	        currency: action.amount
+	      })
+	    // case 'HURT_PLAYER':
+	    //   return Object.assign({}, state, {
+	    //     health: (state.health - (action.amount - state.block)) > 0 ? (state.health - (action.amount - state.block)) : 0,
+	    //   })
 	    default:
 	      return state
 	  }

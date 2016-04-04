@@ -1,62 +1,66 @@
 import React, { Component, PropTypes } from 'react'
 import Stat from './Stat'
 import Currency from './Currency'
-import { Provider } from 'react-redux'
-import stats from '../reducers/stats'
-import { connect } from 'react-redux'
-import { createStore } from 'redux'
+import { updateAttack, updateBlock, updateHealth } from '../actions'
+// import { connect} from 'react-redux';
 
-//const store = 
+// const mapStatToProps = (state) => {
 
-//const store = createStore(stats)
+// }
 
-class Statistics extends Component { 
-  constructor(props) {
-    super(props)
+// const mapDispatchToProps (dispatch) => {
+//   return {
+
+//   }
+// }
+
+class Statistics extends Component {
+
+  componentDidMount() { 
+    const {store} = this.context;
+    this.unsubscribe = store.subscribe(() => 
+      this.forceUpdate()
+    )
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
   }
 
   render() { 
 
-  	const store = createStore(stats)
+    const {store} = this.context;
+    const state = store.getState();
 
     return (
       <div>
+      <h1>You</h1>
   	<Currency
       text='Currency'
-      value={store.getState().currency}
+      value= {state.stats.currency}
     />
     <Stat
       text='Attack'
-      value={store.getState().attack}
-      onIncrement={() => store.dispatch({ type: 'INCREMENT_ATTACK' })}
+      value={state.stats.attack}
+      onIncrement={() => store.dispatch(updateAttack(state.stats.attack+1, 1))}
     />
     <Stat
       text='Block'
-      value={store.getState().block}
-      onIncrement={() => store.dispatch({ type: 'INCREMENT_BLOCK' })}
+      value={state.stats.block}
+      onIncrement={() => store.dispatch(updateBlock(state.stats.block+1, 1))}
     /> 
     <Stat
       text='Health'
-      value={store.getState().health}
-      onIncrement={() => store.dispatch({ type: 'INCREMENT_HEALTH' })} 
+      value={state.stats.health}
+      onIncrement={() => store.dispatch(updateHealth(state.stats.health+1, 1))} 
     />
     </div>
     )
   }
-
-
-
-  
 } 
 
+Statistics.contextTypes = {
+  store: React.PropTypes.object
+}
 
-//console.log("sta", Statistics)
-
-
-//Stat.propTypes = {
-//  value: PropTypes.number.isRequired,
-//  text: PropTypes.string.isRequired,
-//  onIncrement: PropTypes.func.isRequired
-//}
-
-export default connect()(Statistics)
+export default Statistics

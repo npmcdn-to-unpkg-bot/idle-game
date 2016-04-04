@@ -1,12 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 
-class Stat extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    const { value, text, onIncrement } = this.props
+const Stat = ({
+  value,
+  text,
+  onIncrement
+}) => {
     return (
       <p>
         {text}: {value}
@@ -17,7 +15,6 @@ class Stat extends Component {
         {' '}
       </p>
     )
-  }
 } 
 
 Stat.propTypes = {

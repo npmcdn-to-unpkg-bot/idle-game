@@ -6,5 +6,13 @@ const initialState = {
 }
 
 export default function enemy(state = initialState, action) {
-		return state
+		switch (action.type) {
+	    case 'UPDATE_ENEMY_HEALTH':
+	      return Object.assign({}, state, {
+	        health: action.amount
+	      })
+
+	    default: 
+	    	return state
+	    }
 }
