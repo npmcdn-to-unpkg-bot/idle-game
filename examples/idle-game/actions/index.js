@@ -1,3 +1,5 @@
+//PLAYER
+
 export const updateAttack = (amount, cost = 0) => {
   return {
     type: 'UPDATE_ATTACK',
@@ -22,13 +24,6 @@ export const updateHealth = (amount, cost = 0) => {
   }
 }
 
-export const updateEnemyHealth = (amount) => {
-  return {
-    type: 'UPDATE_ENEMY_HEALTH',
-    amount
-  }
-}
-
 export const updateCurrency = (amount) => {
   return {
     type: 'UPDATE_CURRENCY',
@@ -36,9 +31,20 @@ export const updateCurrency = (amount) => {
   }
 }
 
-// export const hurtPlayer = (amount) => {
-//   return {
-//     type: 'HURT_PLAYER',
-//     amount
-//   }
-// }
+//ENEMY
+
+export const updateEnemyHealth = (amount) => {
+  return {
+    type: 'UPDATE_ENEMY_HEALTH',
+    amount
+  }
+}
+
+export const createNewEnemy = (attack, health, reward) => {
+  return {
+    type: 'CREATE_NEW_ENEMY',
+    attack,
+    health,
+    reward
+  }
+}

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { updateHealth, updateEnemyHealth, updateCurrency } from '../actions'
+import Enemies from './Enemies'
 
 class Battle extends Component { 
 
@@ -22,8 +23,8 @@ class Battle extends Component {
     const enemyAttack = () => {
     	//Enemy attack
     	console.log("ENEMIES TURN")
-    	const playerLife = state.stats.health - (state.enemy.attack - state.stats.block);
-		console.log("Enemy attacked player and did " + (state.enemy.attack - state.stats.block) + " damage");
+    	const playerLife = state.player.health - (state.enemy.attack - state.player.block);
+		console.log("Enemy attacked player and did " + (state.enemy.attack - state.player.block) + " damage");
 		if (playerLife > 0) {
     		store.dispatch(updateHealth(playerLife));
     		
@@ -37,8 +38,8 @@ class Battle extends Component {
     const playerAttack = () => {
     	//Player attack
     	console.log("PLAYERS TURN")
-    	const enemyLife = state.enemy.health - state.stats.attack;
-		console.log("Player attacked Enemy and did " + state.stats.attack + " damage");
+    	const enemyLife = state.enemy.health - state.player.attack;
+		console.log("Player attacked Enemy and did " + state.player.attack + " damage");
     	if (enemyLife > 0) {
     		store.dispatch(updateEnemyHealth(enemyLife));
     		
@@ -49,13 +50,15 @@ class Battle extends Component {
     		store.dispatch(updateEnemyHealth(0));
     		//Enemy Died
     		console.log("Enemy died");
+        const {attack, health, reward} = Enemies.getRandomEnemy();
+        store.dispatch(createNewEnemy(attack, health, reward));
     		claimReward();
     	}
     }
 
     //Do Battle - Pikachu, I choose you! 
     const doBattle = () => {
-    	if (state.stats.health > 0) {
+    	if (state.player.health > 0) {
     		if (state.enemy.health > 0) {
     			playerAttack();
     		} else {
@@ -68,7 +71,7 @@ class Battle extends Component {
   	}
 
   	const claimReward = () => {
-  		const newCurrency = state.stats.currency + state.enemy.reward;
+  		const newCurrency = state.player.currency + state.enemy.reward;
   		store.dispatch(updateCurrency(newCurrency));
   	}
 

@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-import stats from './stats'
+import player from './player'
 import enemy from './enemy'
 
 const game = combineReducers({
-  stats,
+  player,
   enemy
 })
 

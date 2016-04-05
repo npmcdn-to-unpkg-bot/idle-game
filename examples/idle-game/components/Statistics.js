@@ -37,22 +37,22 @@ class Statistics extends Component {
       <h1>You</h1>
   	<Currency
       text='Currency'
-      value= {state.stats.currency}
+      value= {state.player.currency}
     />
     <Stat
       text='Attack'
-      value={state.stats.attack}
-      onIncrement={() => store.dispatch(updateAttack(state.stats.attack+1, 1))}
+      value={state.player.attack}
+      onIncrement={() => store.dispatch(updateAttack(state.player.attack+1, 1))}
     />
     <Stat
       text='Block'
-      value={state.stats.block}
-      onIncrement={() => store.dispatch(updateBlock(state.stats.block+1, 1))}
+      value={state.player.block}
+      onIncrement={() => store.dispatch(updateBlock(state.player.block+1, 1))}
     /> 
     <Stat
       text='Health'
-      value={state.stats.health}
-      onIncrement={() => store.dispatch(updateHealth(state.stats.health+1, 1))} 
+      value={state.player.health}
+      onIncrement={() => store.dispatch(updateHealth(state.player.health+1, 1))} 
     />
     </div>
     )

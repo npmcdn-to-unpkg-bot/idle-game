@@ -6,7 +6,7 @@ const initialState = {
 	currency: 10
 }
 
-export default function stats(state = initialState, action) {
+export default function player(state = initialState, action) {
 
 //console.log('state', state)
   if (state.currency > 0) {
