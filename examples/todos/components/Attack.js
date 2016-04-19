@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 
-const Attack = ({ attackValue, onClick }) => (
+const Attack = ({ attack, onClick }) => (
   <div>
-    <p>Attack: {attackValue} </p>
+    <p>Attack: {attack} </p>
 
     <button
       onClick={onClick} 
@@ -14,7 +14,7 @@ const Attack = ({ attackValue, onClick }) => (
 
 Attack.propTypes = {
   onClick: PropTypes.func.isRequired,
-  attackValue: PropTypes.number.isRequired
+  attack: PropTypes.number.isRequired
 }
 
 export default Attack

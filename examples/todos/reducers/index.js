@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 import todos from './todos'
-import attack from './attack'
+import stats from './stats'
 import visibilityFilter from './visibilityFilter'
 
 const todoApp = combineReducers({
   todos,
   visibilityFilter,
-  attack
+  stats
 })
 
 export default todoApp

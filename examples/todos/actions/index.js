@@ -26,3 +26,9 @@ export const incAttack = () => {
     type: 'INCREMENT_ATTACK'
   }
 }
+
+export const incDefence = () => {
+  return {
+    type: 'INCREMENT_DEFENCE'
+  }
+}

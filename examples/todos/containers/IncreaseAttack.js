@@ -5,7 +5,7 @@ import Attack from '../components/Attack'
 const mapStateToProps = (state) => {
 	console.log(state)
   return {
-    attackValue: state.attack.attackValue
+    attack: state.stats.attack
   }
 }
 
