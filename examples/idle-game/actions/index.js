@@ -40,11 +40,21 @@ export const updateEnemyHealth = (amount) => {
   }
 }
 
-export const createNewEnemy = (attack, health, reward) => {
+export const createNewEnemy = (name, attack, health, reward) => {
   return {
     type: 'CREATE_NEW_ENEMY',
+    name,
     attack,
     health,
     reward
+  }
+}
+
+//MESSAGES
+
+export const addMessage = (message) => {
+  return {
+    type: 'ADD_MESSAGE',
+    message
   }
 }

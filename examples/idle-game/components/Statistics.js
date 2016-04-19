@@ -20,7 +20,7 @@ class Statistics extends Component {
     const {store} = this.context;
     this.unsubscribe = store.subscribe(() => 
       this.forceUpdate()
-    )
+      )
   }
 
   componentWillUnmount() {
@@ -32,30 +32,52 @@ class Statistics extends Component {
     const {store} = this.context;
     const state = store.getState();
 
+    const increaseAttack = (amount = 1, cost = 1) => {
+      if (moneyRemaining(cost)) {
+        store.dispatch(updateAttack(state.player.attack+amount, 1));
+      }
+    }
+
+    const increaseBlock = (amount = 1, cost = 1) => {
+      if (moneyRemaining(cost)) {
+        store.dispatch(updateBlock(state.player.block+amount, 1));
+      }
+    }
+
+    const increaseHealth = (amount = 1, cost = 1) => {
+      if (moneyRemaining(cost)) {
+        store.dispatch(updateHealth(state.player.health+amount, 1));
+      }
+    }
+
+    const moneyRemaining = (cost) => {
+      return state.player.currency >= cost;
+    }
+
     return (
       <div>
       <h1>You</h1>
-  	<Currency
+      <Currency
       text='Currency'
       value= {state.player.currency}
-    />
-    <Stat
+      />
+      <Stat
       text='Attack'
       value={state.player.attack}
-      onIncrement={() => store.dispatch(updateAttack(state.player.attack+1, 1))}
-    />
-    <Stat
+      onIncrement={() => increaseAttack()}
+      />
+      <Stat
       text='Block'
       value={state.player.block}
-      onIncrement={() => store.dispatch(updateBlock(state.player.block+1, 1))}
-    /> 
-    <Stat
+      onIncrement={() => increaseBlock()}
+      /> 
+      <Stat
       text='Health'
       value={state.player.health}
-      onIncrement={() => store.dispatch(updateHealth(state.player.health+1, 1))} 
-    />
-    </div>
-    )
+      onIncrement={() => increaseHealth()} 
+      />
+      </div>
+      )
   }
 } 
 

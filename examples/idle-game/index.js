@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import Statistics from './components/Statistics'
 import Enemy from './components/Enemy'
 import Battle from './components/Battle'
+import Messages from './components/Messages'
 import game from './reducers/'
 
 let store = createStore(game) 
@@ -16,6 +17,7 @@ render(
     <Statistics />
     <Enemy />
     <Battle />
+    <Messages />
     </div>
   </Provider>,
   document.getElementById('root')

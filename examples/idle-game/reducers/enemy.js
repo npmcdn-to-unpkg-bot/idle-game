@@ -1,5 +1,6 @@
 
 const initialState = {
+	name: "Bradley",
 	attack: 3,
 	health: 7,
 	reward: 10
@@ -13,6 +14,7 @@ export default function enemy(state = initialState, action) {
 		})
 		case 'CREATE_NEW_ENEMY': 
 		return Object.assign({}, state, {
+			name: action.name,
 			attack: action.attack,
 			health: action.health,
 			reward: action.reward,

@@ -35,12 +35,17 @@ class Enemy extends Component {
     return (
       <div>
         <h1>Enemy</h1>
-      
+      <p>
+        Name: {state.enemy.name}
+      </p>
       <p>
         Attack: {state.enemy.attack}
       </p>
       <p>
         Health: {state.enemy.health}
+      </p>
+      <p>
+        Reward: {state.enemy.reward}
       </p>
     </div>
     )
